@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">CameraX File App</string>
+    <string name="files_button_desc_main">My File</string>
+    <string name="add_new_file_button_desc_main">(+) Add New File</string>
+    <string name="take_photo_button_desc_main">Take Photo</string>
+    <string name="gallery_button_desc_main">Gallery</string>
+</resources>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/root_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:elevation="2dp">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:id="@+id/topLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:background="@color/purple_700"
+                    android:elevation="2dp">
+
+                    <Button
+                        android:id="@+id/fileBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="@string/files_button_desc_main"
+                        android:onClick="fileBtnClick"
+                        android:elevation="2dp"
+                        android:layout_margin="5dp"/>
+
+                    <Button
+                        android:id="@+id/fileNameTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_margin="5dp"
+                        android:text="@string/add_new_file_button_desc_main"
+                        android:textAlignment="center"
+                        android:onClick="addNewFileClick"
+                        />
+            </LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:visibility="invisible"
+                android:id="@+id/fileListRV"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:elevation="3dp"
+                app:layout_constraintLeft_toLeftOf="parent"/>
+
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/camera_capture_button"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginBottom="50dp"
+            android:scaleType="fitCenter"
+            android:text="@string/take_photo_button_desc_main"
+            android:onClick="takePhotoClick"
+            android:layout_marginRight="10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:elevation="3dp" />
+
+        <Button
+            android:id="@+id/galleryBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/gallery_button_desc_main"
+            android:onClick="galleryBtnClick"
+            app:layout_constraintBottom_toBottomOf="@id/camera_capture_button"
+            app:layout_constraintTop_toTopOf="@id/camera_capture_button"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/camera_capture_button"
+            android:layout_margin="15dp"
+            android:padding="15dp"/>
+
+        <androidx.camera.view.PreviewView
+            android:id="@+id/viewFinder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
