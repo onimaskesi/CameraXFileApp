@@ -3,6 +3,7 @@ package com.onimaskesi.cameraxfileapp
 import android.Manifest
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
@@ -56,36 +57,49 @@ class MainActivity : AppCompatActivity() {
     var imagePath = ""
     var fileName = ""
 
+    private lateinit var prefences : SharedPreferences
+    private lateinit var editor : SharedPreferences.Editor
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        prefences = getSharedPreferences(PREFS_FILENAME, Context.MODE_PRIVATE)
+        editor = prefences.edit()
+
+        getCurrentFileOnStart()
+
         // Request camera permissions
         if (allPermissionsGranted()) {
             startCamera()
+            //outputDirectory = getOutputDirectory()
+            //outputDirectory = File("/storage/emulated/0/DCIM/Camera/2").apply{mkdir()}
+            fileName = fileBtn.text.toString().toUpperCase()
+            outputDirectory = File(BASE_FILE_PATH + "/" + fileName).apply{mkdir()}
+
+            cameraExecutor = Executors.newSingleThreadExecutor()
+
+            //Database
+            db = Room.databaseBuilder( applicationContext,
+                    AppDatabase::class.java,
+                    "AppDatabase")
+                    .allowMainThreadQueries()
+                    .fallbackToDestructiveMigration()
+                    .build()
+
+            updateFileList()
         } else {
             ActivityCompat.requestPermissions(
                     this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS)
         }
 
+    }
 
-        //outputDirectory = getOutputDirectory()
-        //outputDirectory = File("/storage/emulated/0/DCIM/Camera/2").apply{mkdir()}
-        fileName = fileBtn.text.toString().toUpperCase()
-        outputDirectory = File(BASE_FILE_PATH + "/" + fileName).apply{mkdir()}
+    fun getCurrentFileOnStart(){
+        var currentFile = prefences.getString(KEY_NAME,"My File")
 
-        cameraExecutor = Executors.newSingleThreadExecutor()
-
-        //Database
-       db = Room.databaseBuilder( applicationContext,
-           AppDatabase::class.java,
-           "AppDatabase")
-           .allowMainThreadQueries()
-           .fallbackToDestructiveMigration()
-           .build()
-
-        updateFileList()
-
+        fileBtn.text = currentFile
+        updateOutputDirectory()
     }
 
     fun galleryBtnClick(view : View){
@@ -107,6 +121,8 @@ class MainActivity : AppCompatActivity() {
 
     fun updateOutputDirectory(){
         fileName = fileBtn.text.toString().toUpperCase()
+        editor.putString(KEY_NAME,fileName)
+        editor.commit()
         outputDirectory = File(BASE_FILE_PATH + "/" + fileName).apply{mkdir()}
     }
 
@@ -220,7 +236,7 @@ class MainActivity : AppCompatActivity() {
                 db.imageDao().insertAll(image)
                 val savedUri = Uri.fromFile(photoFile)
                 val msg = "Photo capture succeeded: $savedUri"
-                Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
+                Toast.makeText(baseContext, "Photo Saved \uD83D\uDE0A", Toast.LENGTH_SHORT).show()
                 Log.d(TAG, msg)
             }
         })
@@ -310,6 +326,9 @@ class MainActivity : AppCompatActivity() {
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 Manifest.permission.READ_EXTERNAL_STORAGE
         )
+
+        private const val PREFS_FILENAME = "MyFile"
+        private const val KEY_NAME = "currentFile"
 
     }
 
