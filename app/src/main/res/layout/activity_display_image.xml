@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
+    android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -10,11 +11,40 @@
     <com.onimaskesi.cameraxfileapp.ZoomClass
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_height="400dp"
+        android:layout_weight="10"
         app:srcCompat="@drawable/ic_launcher_background"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_margin="10dp"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_weight="1">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="deleteBtnClick"
+            android:text="delete 🗑️"
+            android:textSize="20dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"/>
+            <!---->
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="shareBtnClick"
+            android:text="share 🔗"
+            android:textSize="20dp"
+            android:layout_margin="10dp"
+            />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

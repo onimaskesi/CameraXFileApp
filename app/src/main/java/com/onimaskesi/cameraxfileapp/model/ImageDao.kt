@@ -14,6 +14,9 @@ interface ImageDao {
     @Query("SELECT * FROM imageTable WHERE fileName IN (:fileName)")
     fun getImagesFromFile(fileName: String): List<ImageObj>
 
+    @Query("SELECT * FROM imageTable WHERE path IN (:path)")
+    fun getImageFromPath(path: String): ImageObj
+
     @Insert
     fun insertAll(vararg images: ImageObj)
 
