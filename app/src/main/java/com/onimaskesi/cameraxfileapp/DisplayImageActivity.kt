@@ -40,9 +40,6 @@ class DisplayImageActivity : AppCompatActivity() {
         bitmap = BitmapFactory.decodeFile(path)
         imageView.setImageBitmap(bitmap)
 
-        val builder: StrictMode.VmPolicy.Builder = StrictMode.VmPolicy.Builder()
-        StrictMode.setVmPolicy(builder.build())
-
         db = Room.databaseBuilder( applicationContext,
             AppDatabase::class.java,
             "AppDatabase")
@@ -59,7 +56,7 @@ class DisplayImageActivity : AppCompatActivity() {
         val bytes = ByteArrayOutputStream()
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
 
-        //Get URI of saved image
+        //Get URI of the image
         val uri = Uri.parse(path)
 
         //Put Uri as extra to share intent

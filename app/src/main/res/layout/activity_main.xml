@@ -31,6 +31,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:background="@drawable/purple_background"
                         android:text="@string/files_button_desc_main"
                         android:onClick="fileBtnClick"
                         android:elevation="2dp"
@@ -42,6 +43,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:layout_margin="5dp"
+                        android:background="@drawable/purple_background"
                         android:text="@string/add_new_file_button_desc_main"
                         android:textAlignment="center"
                         android:onClick="addNewFileClick"
@@ -58,32 +60,32 @@
         </LinearLayout>
 
 
-        <Button
+        <ImageView
             android:id="@+id/camera_capture_button"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginBottom="50dp"
             android:scaleType="fitCenter"
-            android:text="@string/take_photo_button_desc_main"
+            android:src="@drawable/ic_camera_shutter"
             android:onClick="takePhotoClick"
             android:layout_marginRight="10dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:elevation="3dp" />
+            android:elevation="4dp" />
 
-        <Button
+        <ImageView
             android:id="@+id/galleryBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/gallery_button_desc_main"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_gallery"
             android:onClick="galleryBtnClick"
             app:layout_constraintBottom_toBottomOf="@id/camera_capture_button"
             app:layout_constraintTop_toTopOf="@id/camera_capture_button"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toRightOf="@id/camera_capture_button"
             android:layout_margin="15dp"
-            android:padding="15dp"/>
+            android:elevation="4dp"/>
 
         <androidx.camera.view.PreviewView
             android:id="@+id/viewFinder"
