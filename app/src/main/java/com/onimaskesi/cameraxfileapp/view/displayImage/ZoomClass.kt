@@ -1,4 +1,4 @@
-package com.onimaskesi.cameraxfileapp
+package com.onimaskesi.cameraxfileapp.view.displayImage
 
 import android.content.Context
 import android.graphics.Matrix
@@ -19,7 +19,8 @@ class ZoomClass : AppCompatImageView, View.OnTouchListener,
     private var mGestureDetector: GestureDetector? = null
     var mMatrix: Matrix? = null
     private var mMatrixValues: FloatArray? = null
-    var mode = NONE
+    var mode =
+        NONE
 
     // Scales
     var mSaveScale = 1f
@@ -58,7 +59,8 @@ class ZoomClass : AppCompatImageView, View.OnTouchListener,
 
     private inner class ScaleListener : ScaleGestureDetector.SimpleOnScaleGestureListener() {
         override fun onScaleBegin(detector: ScaleGestureDetector): Boolean {
-            mode = ZOOM
+            mode =
+                ZOOM
             return true
         }
 
@@ -167,7 +169,8 @@ class ZoomClass : AppCompatImageView, View.OnTouchListener,
             MotionEvent.ACTION_DOWN -> {
                 mLast.set(currentPoint)
                 mStart.set(mLast)
-                mode = DRAG
+                mode =
+                    DRAG
             }
             MotionEvent.ACTION_MOVE -> if (mode == DRAG) {
                 val dx = currentPoint.x - mLast.x
@@ -178,7 +181,8 @@ class ZoomClass : AppCompatImageView, View.OnTouchListener,
                 fixTranslation()
                 mLast[currentPoint.x] = currentPoint.y
             }
-            MotionEvent.ACTION_POINTER_UP -> mode = NONE
+            MotionEvent.ACTION_POINTER_UP -> mode =
+                NONE
         }
         imageMatrix = mMatrix
         return false

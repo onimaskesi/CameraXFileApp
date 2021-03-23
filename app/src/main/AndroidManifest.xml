@@ -13,9 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CameraXFileApp">
-        <activity android:name=".DisplayImageActivity"></activity>
-        <activity android:name=".GalleryActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".view.displayImage.DisplayImageActivity"></activity>
+        <activity android:name=".view.gallery.GalleryActivity" />
+        <activity android:name=".view.camera.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -9,9 +9,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.onimaskesi.cameraxfileapp.DisplayImageActivity
+import com.onimaskesi.cameraxfileapp.view.displayImage.DisplayImageActivity
 import com.onimaskesi.cameraxfileapp.R
-import com.onimaskesi.cameraxfileapp.model.ImageObj
+import com.onimaskesi.cameraxfileapp.model.entities.ImageObj
 import kotlinx.android.synthetic.main.gallery_recycler_raw.view.*
 
 

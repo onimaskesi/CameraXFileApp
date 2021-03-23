@@ -1,29 +1,19 @@
-package com.onimaskesi.cameraxfileapp
+package com.onimaskesi.cameraxfileapp.view.displayImage
 
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.drawable.BitmapDrawable
-import android.graphics.drawable.Drawable
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.StrictMode
-import android.provider.MediaStore
-import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.ImageView
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.room.Room
-import com.onimaskesi.cameraxfileapp.model.AppDatabase
-import com.onimaskesi.cameraxfileapp.model.ImageObj
-import com.squareup.picasso.Picasso
+import com.onimaskesi.cameraxfileapp.R
+import com.onimaskesi.cameraxfileapp.model.database.AppDatabase
+import com.onimaskesi.cameraxfileapp.view.gallery.GalleryActivity
 import kotlinx.android.synthetic.main.activity_display_image.*
 import java.io.ByteArrayOutputStream
 import java.io.File
-import java.io.FileOutputStream
-import java.io.IOException
 
 class DisplayImageActivity : AppCompatActivity() {
 

@@ -1,4 +1,4 @@
-package com.onimaskesi.cameraxfileapp
+package com.onimaskesi.cameraxfileapp.view.camera
 
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.ImageProxy

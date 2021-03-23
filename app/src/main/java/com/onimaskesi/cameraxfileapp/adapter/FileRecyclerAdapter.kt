@@ -1,14 +1,12 @@
 package com.onimaskesi.cameraxfileapp.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
 import com.onimaskesi.cameraxfileapp.R
-import com.onimaskesi.cameraxfileapp.model.FileObj
-import kotlinx.android.synthetic.main.activity_main.view.*
+import com.onimaskesi.cameraxfileapp.model.entities.FileObj
 import kotlinx.android.synthetic.main.recycler_raw.view.*
 
 class FileRecyclerAdapter(val fileList : ArrayList<FileObj>, val fileButton : Button, val fileListRV : RecyclerView) : RecyclerView.Adapter<FileRecyclerAdapter.FileHolder>() {

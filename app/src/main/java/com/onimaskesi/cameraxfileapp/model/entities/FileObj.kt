@@ -1,4 +1,4 @@
-package com.onimaskesi.cameraxfileapp.model
+package com.onimaskesi.cameraxfileapp.model.entities
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

@@ -1,9 +1,10 @@
-package com.onimaskesi.cameraxfileapp.model
+package com.onimaskesi.cameraxfileapp.model.dataAccessLayer
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
+import com.onimaskesi.cameraxfileapp.model.entities.FileObj
 
 @Dao
 interface FileDao {

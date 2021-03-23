@@ -1,4 +1,4 @@
-package com.onimaskesi.cameraxfileapp
+package com.onimaskesi.cameraxfileapp.view.camera
 
 import android.Manifest
 import android.content.Context
@@ -25,14 +25,14 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
+import com.onimaskesi.cameraxfileapp.R
 import com.onimaskesi.cameraxfileapp.adapter.FileRecyclerAdapter
-import com.onimaskesi.cameraxfileapp.model.AppDatabase
-import com.onimaskesi.cameraxfileapp.model.FileObj
-import com.onimaskesi.cameraxfileapp.model.ImageObj
+import com.onimaskesi.cameraxfileapp.model.database.AppDatabase
+import com.onimaskesi.cameraxfileapp.model.entities.FileObj
+import com.onimaskesi.cameraxfileapp.model.entities.ImageObj
+import com.onimaskesi.cameraxfileapp.view.gallery.GalleryActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.pop_up_add_file.*
 import kotlinx.android.synthetic.main.pop_up_add_file.view.*
 import java.io.File
 import java.text.SimpleDateFormat
@@ -90,7 +90,8 @@ class MainActivity : AppCompatActivity() {
             updateFileList()
         } else {
             ActivityCompat.requestPermissions(
-                    this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS)
+                    this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS
+            )
         }
 
     }
@@ -184,7 +185,8 @@ class MainActivity : AppCompatActivity() {
         // Set a click listener for popup's button widget
         buttonPopup.setOnClickListener{
             fileName = et.text.toString().toUpperCase()
-            val file = FileObj(fileName)
+            val file =
+                FileObj(fileName)
             db.fileDao().insertAll(file)
             updateFileList()
             fileBtn.text = fileName
@@ -215,7 +217,8 @@ class MainActivity : AppCompatActivity() {
         // Create time-stamped output file to hold the image
         val photoFile = File(
                 outputDirectory,
-                SimpleDateFormat(FILENAME_FORMAT, Locale.US
+                SimpleDateFormat(
+                    FILENAME_FORMAT, Locale.US
                 ).format(System.currentTimeMillis()) + ".jpg")
 
         imagePath = photoFile.path
@@ -232,7 +235,11 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onImageSaved(output: ImageCapture.OutputFileResults) {
-                var image = ImageObj(fileName, imagePath)
+                var image =
+                    ImageObj(
+                        fileName,
+                        imagePath
+                    )
                 db.imageDao().insertAll(image)
                 val savedUri = Uri.fromFile(photoFile)
                 val msg = "Photo capture succeeded: $savedUri"

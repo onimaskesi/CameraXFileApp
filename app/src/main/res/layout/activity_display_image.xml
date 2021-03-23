@@ -6,9 +6,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DisplayImageActivity">
+    tools:context=".view.displayImage.DisplayImageActivity">
 
-    <com.onimaskesi.cameraxfileapp.ZoomClass
+    <com.onimaskesi.cameraxfileapp.view.displayImage.ZoomClass
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="400dp"

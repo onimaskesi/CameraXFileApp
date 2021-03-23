@@ -1,23 +1,15 @@
-package com.onimaskesi.cameraxfileapp
+package com.onimaskesi.cameraxfileapp.view.gallery
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
-import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.view.ViewGroup
-import android.widget.AbsListView
-import android.widget.BaseAdapter
-import android.widget.ImageView
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
-import com.onimaskesi.cameraxfileapp.adapter.FileRecyclerAdapter
+import com.onimaskesi.cameraxfileapp.R
 import com.onimaskesi.cameraxfileapp.adapter.GalleryRecyclerAdapter
-import com.onimaskesi.cameraxfileapp.model.AppDatabase
-import com.onimaskesi.cameraxfileapp.model.ImageObj
+import com.onimaskesi.cameraxfileapp.model.database.AppDatabase
+import com.onimaskesi.cameraxfileapp.model.entities.ImageObj
 import kotlinx.android.synthetic.main.activity_gallery.*
 import java.io.File
 
@@ -83,7 +75,11 @@ class GalleryActivity : AppCompatActivity() {
                     for(i in 0 until count){
                         val imagePath = data.clipData!!.getItemAt(i).uri.path!!
                         //add image to list
-                        val image = ImageObj(fileName, imagePath!!)
+                        val image =
+                            ImageObj(
+                                fileName,
+                                imagePath!!
+                            )
                         db.imageDao().insertAll(image!!)
                         imagesList.add(image!!)
                     }
